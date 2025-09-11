@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: cluster
+
+
+#logging:
+#  level:
+#    io.lettuce.core.protocol: DEBUG
+#    io.lettuce.core.cluster: DEBUG

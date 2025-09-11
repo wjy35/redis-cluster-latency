@@ -1,0 +1,9 @@
+spring:
+  data:
+    redis:
+      cluster:
+        nodes:
+          - ${REDIS_NODE1}
+          - ${REDIS_NODE2}
+          - ${REDIS_NODE3}
+      password: ${REDIS_PASSWORD}
