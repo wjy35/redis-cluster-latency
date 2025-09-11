@@ -5,9 +5,21 @@ CRC16 Hash Slot, Lettuce의 topology cache 로 Redis Cluster의 Rebalancing이 �
 
 ### Test Result
 
+- latency
+  - average 차이 1ms 미만
+  - p99에서만 2ms 차이 발생
+- throughput
+  - key 분산으로 cluster가 더 높음  
 
-spring boot 
+
+**Springboot** 
 <img width="991" height="285" alt="Screenshot 2025-09-11 at 4 04 42 PM" src="https://github.com/user-attachments/assets/9026746f-b852-4d11-88a3-b9ac828348dd" />
+
+<br>
+
+**Redis Benchmark**
+
+<img width="634" height="364" alt="Screenshot 2025-09-11 at 5 39 47 PM" src="https://github.com/user-attachments/assets/adce30ec-c23a-4ef6-a1f2-0f78c7061b6f" />
 
 
 
@@ -177,3 +189,19 @@ ping
 <br>
 <img width="427" height="143" alt="Screenshot 2025-09-11 at 2 34 45 PM" src="https://github.com/user-attachments/assets/c4a13627-ee96-4dbc-aeeb-1f5b247c10b3" />
 
+<br>
+redis bench mark
+
+```shell
+docker exec -it redis-7000 \
+  redis-benchmark \
+  -h my_ip -p 7000 -a my_password \
+  -t get,set -n 100000 -c 50
+```
+
+```shell
+docker exec -it redis-7000 \
+  redis-benchmark --cluster \
+  -h my_ip -p 7000 -a my_password \
+  -t get,set -n 100000 -c 50
+```
