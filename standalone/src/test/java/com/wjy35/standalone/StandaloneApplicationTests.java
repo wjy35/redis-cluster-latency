@@ -31,7 +31,7 @@ class StandaloneApplicationTests {
   /**
    * Measure Properties
    */
-  private static final int MEASURE_ITERATION = 100;
+  private static final int MEASURE_ITERATION = 1000;
   private static final int THREAD_COUNT = 3;
 
   @Autowired
