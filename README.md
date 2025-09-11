@@ -3,14 +3,16 @@
 
 CRC16 Hash Slot, Lettuce의 topology cache 로 Redis Cluster의 Rebalancing이 없다면 성능 차이는 적을것이라고 예상
 
-### Test Result
+### Summary
 
-- latency
-  - average 차이 1ms 미만
-  - p99에서만 2ms 차이 발생
-- throughput
-  - key 분산으로 cluster가 더 높음  
+latency
+- average 차이 1ms 미만
+- p99에서만 cluster가 2ms 더 높음
 
+throughput
+- key 분산으로 cluster가 35.71% 더 높음
+
+### Result
 
 **Springboot** 
 <img width="991" height="285" alt="Screenshot 2025-09-11 at 4 04 42 PM" src="https://github.com/user-attachments/assets/9026746f-b852-4d11-88a3-b9ac828348dd" />
@@ -22,8 +24,7 @@ CRC16 Hash Slot, Lettuce의 topology cache 로 Redis Cluster의 Rebalancing이 �
 <img width="634" height="364" alt="Screenshot 2025-09-11 at 5 39 47 PM" src="https://github.com/user-attachments/assets/adce30ec-c23a-4ef6-a1f2-0f78c7061b6f" />
 
 
-
-### Test Environment
+### Environment
 
 Redis Node
 - Google Cloud
