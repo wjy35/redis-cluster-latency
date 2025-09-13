@@ -44,32 +44,25 @@ Spring
 Boot script
 
 ```shell
-sudo apt-get update
-sudo apt-get upgrade 
+sudo apt-get -y update
+sudo apt-get -y upgrade 
 sudo timedatectl set-timezone Asia/Seoul
 sudo apt install ufw
 sudo ufw status verbose
-sudo ufw enable
+sudo echo "y" | sudo ufw enable 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-
-sudo ufw allow 7000
-sudo ufw allow 7001
-sudo ufw allow 7002
-sudo ufw allow 17000
-sudo ufw allow 17001
-sudo ufw allow 17002
-
+sudo ufw allow ssh
+sudo ufw allow 6379
+sudo ufw allow 7000:7002
+sudo ufw allow 17000:17002
 sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get -y update && sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ubuntu
-
 sudo service docker restart
-
 sudo apt install jq
-
 DCVERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
 DCDESTINATION=/usr/bin/docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/${DCVERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DCDESTINATION
